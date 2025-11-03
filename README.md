@@ -7,60 +7,130 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# 🚗 RentLy - Sistem Rental Kendaraan
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Website rental kendaraan berbasis Laravel 10.49.1 dengan fitur lengkap untuk user dan admin.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📋 Fitur
 
-## Learning Laravel
+### User
+- Landing page dengan hero section
+- Daftar kendaraan dengan filter & search
+- Detail kendaraan dengan badge trusted
+- Form pemesanan dengan perhitungan otomatis
+- Dashboard riwayat pemesanan
+- Login & Register
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Admin
+- Dashboard dengan statistik
+- CRUD Kendaraan lengkap
+- Kelola pemesanan (approve/reject/complete)
+- Filter dan search
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🛠️ Instalasi
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1. Clone & Setup
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+```
 
-## Laravel Sponsors
+### 2. Konfigurasi Database
+Edit `.env`:
+```
+DB_DATABASE=rently
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 3. Migrasi & Seed
+```bash
+php artisan migrate
+php artisan db:seed
+php artisan storage:link
+```
 
-### Premium Partners
+### 4. Jalankan Server
+```bash
+php artisan serve
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Akses: `http://localhost:8000`
 
-## Contributing
+## 👤 Akun Default
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**Admin:**
+- Email: admin@rently.com
+- Password: password
 
-## Code of Conduct
+**User:**
+- Email: user@rently.com
+- Password: password
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 📁 Struktur File
 
-## Security Vulnerabilities
+```
+app/
+├── Http/
+│   ├── Controllers/
+│   │   ├── Admin/
+│   │   │   ├── AdminController.php
+│   │   │   ├── KendaraanAdminController.php
+│   │   │   └── PemesananAdminController.php
+│   │   ├── DashboardController.php
+│   │   ├── KendaraanController.php
+│   │   ├── LandingController.php
+│   │   └── PemesananController.php
+│   └── Middleware/
+│       └── RoleMiddleware.php
+├── Models/
+│   ├── Kendaraan.php
+│   ├── Pemesanan.php
+│   └── User.php
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+resources/views/
+├── layouts/app.blade.php
+├── landing.blade.php
+├── auth/
+│   ├── login.blade.php
+│   └── register.blade.php
+├── kendaraan/
+│   ├── index.blade.php
+│   └── show.blade.php
+├── pemesanan/
+│   └── create.blade.php
+├── dashboard/
+│   └── user.blade.php
+└── admin/
+    ├── dashboard.blade.php
+    ├── kendaraan/
+    │   ├── index.blade.php
+    │   ├── create.blade.php
+    │   └── edit.blade.php
+    └── pemesanan/
+        ├── index.blade.php
+        └── show.blade.php
 
-## License
+public/
+├── css/style.css
+└── js/script.js
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🎨 Teknologi
+
+- **Backend:** Laravel 10.49.1, PHP 8
+- **Database:** MySQL
+- **Frontend:** HTML, CSS, JavaScript (Vanilla)
+- **Design:** Modern, Responsive, Gradient
+
+
+
+## 📧 Support
+
+Email: info@rently.com
+
+---
+
+© 2024 RentLy. All rights reserved.
